@@ -1,6 +1,6 @@
 import math
 
-k = 1000
+k = 10
 
 y = [0] * k
 x = [0] * k
@@ -11,15 +11,12 @@ x[0] = y[0]
 h = 0.2
 
 
-def f(x, y): return x + math.cos(y / math.sqrt(y))
+def f(x, y): return x + math.cos(y / math.sqrt(10))
 
 
 for i in range(k - 1):
     x[i + 1] = x[i] + h
 
-for i in range(k - 1):
-    f1 = ((2 * x[i] - 5) * y[i]) / (x[i] ** 2) + 5
-    y[i + 1] = y[i] + h * f1
 
 for i in range(k - 1):
     k1 = f(x[i], y[i])
