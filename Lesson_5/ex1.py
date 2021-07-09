@@ -7,7 +7,7 @@ def getTime(func):
         st = time.time()
         res = func(N)
         et = time.time()
-        print(N, et - st, sep=' ; ')
+        #print(N, et - st, sep=' ; ')
         return res
     return getFuncTime
 
@@ -45,7 +45,11 @@ def getCalc(N):
         f[0][j + 1] = f[1][j + 1]
         f[N - 1][j + 1] = f[N - 2][j + 1] + 2 * h * math.sin(t[j + 1])
 
+    for i in range(N):
+
+        print(x[i],f[i][int(N/2)],sep=";")
+
     return f
 
-for i in range(100,10001,100):
-    getCalc(i)
+# for i in range(100,1000,100):
+getCalc(1000)
