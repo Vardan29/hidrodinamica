@@ -1,6 +1,5 @@
 import math
 
-
 def f(x, y):
     b = 0.3
     A = 5
@@ -42,9 +41,19 @@ def getResult(NX, NY, NZ):
                 u[k+1][i][j] = (1 - 2 * gammaX - 2 * gammaY) * u[k][i][j] + gammaX * (u[k][i+1][j]+u[k][i-1][j])+ gammaY*(u[k][i][j+1]+u[k][i][j-1])+tau * f(x[i],y[j])
 
     for k in range(NZ):
+        yield u[k]
+
+
+NZ = 10
+NX = NY = 20
+
+u = getResult(NX,NY,NZ)
+
+for k in range(NZ):
+    x = next(u)
+    with open(f"./text/coordinates{k}.txt","w+") as f:
         for i in range(NY):
-            print(u[k][i])
-        print()
+            for j in range(NX):
+                f.write(f"{i}; {j}; {x[i][j]}\n")
 
 
-getResult(10,10,10)
